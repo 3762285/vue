@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="search" onsearch="search()">
+<script>
+    function search(
+    ) {
+        console.log('search')
+    }
+    window.onsearch=function () {
+        console.log('window.onsearch')
+    }
+</script>
+</body>
+</html>

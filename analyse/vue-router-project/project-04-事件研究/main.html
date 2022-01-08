@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>主页</h2>
+<script>
+    window.onpopstate = function (event) {
+        console.log(`location:${document.location},state:${JSON.stringify(event.state)}`)
+    }
+    window.history.pushState({page: 1}, 'title 1', "?page=1")
+    window.history.pushState({page: 2}, "title 2", "?page=2")
+    window.history.replaceState({page: 3}, "title 3", "?page=3")
+    console.log(history.state)
+    history.back()
+    history.back()
+    console.log(history.back())
+    history.go(2)
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="98e21518-2cb9-4d21-8f69-8f110613cc36" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1z7FRg514GIa97YX2TYrYUAk3OI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\电子书\vue\vue-analyse\测试代码" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.005 Vue.use的使用.html">
+    <configuration name="002 Vue.set的使用.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/测试代码/002 Vue.set的使用.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="003 多个vue应用.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/测试代码/003 多个vue应用.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="004  errorHandler的应用.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/测试代码/004  errorHandler的应用.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="005 Vue.use的使用.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/测试代码/005 Vue.use的使用.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="元编程.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/元编程.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="属性是函数.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/属性是函数.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.005 Vue.use的使用.html" />
+        <item itemvalue="JavaScript Debug.004  errorHandler的应用.html" />
+        <item itemvalue="JavaScript Debug.003 多个vue应用.html" />
+        <item itemvalue="Node.js.元编程.js" />
+        <item itemvalue="JavaScript Debug.002 Vue.set的使用.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="98e21518-2cb9-4d21-8f69-8f110613cc36" name="Default Changelist" comment="" />
+      <created>1633491212550</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633491212550</updated>
+      <workItem from="1633491213654" duration="5312000" />
+      <workItem from="1633740840579" duration="30288000" />
+      <workItem from="1634031679214" duration="5516000" />
+      <workItem from="1634091926756" duration="11529000" />
+      <workItem from="1634172319380" duration="6460000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="677" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1634006161969">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="677" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1634006161969" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1634182088621">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1634182088621" />
+    <state width="949" height="215" key="GridCell.Tab.0.bottom" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.0.center" timestamp="1634006997351">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997351" />
+    <state width="949" height="215" key="GridCell.Tab.0.left" timestamp="1634006997351">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997351" />
+    <state width="949" height="215" key="GridCell.Tab.0.right" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.1.bottom" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.1.center" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.1.left" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.1.right" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.2.bottom" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.2.center" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.2.left" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.2.right" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.3.bottom" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.3.center" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.3.left" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state width="949" height="215" key="GridCell.Tab.3.right" timestamp="1634006997352">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="215" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1634006997352" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1634109582908">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1634109582908" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/属性是函数.js</url>
+          <line>10</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/005 Vue.use的使用.html</url>
+          <line>17</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

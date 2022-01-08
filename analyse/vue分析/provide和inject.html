@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Documenttitle</title>
+</head>
+<body>
+<div id="app">
+    <child></child>
+</div>
+<script src="./vue.js"></script>
+<script>
+    Vue.component('child', {
+        inject: ['message'],
+        template: '<p>{{message}}</p>'
+    })
+    let vm=new Vue({
+        el: '#app',
+        provide: {
+            message: 'Hello Vue!'
+        }
+    })
+</script>
+</body>
+</html>

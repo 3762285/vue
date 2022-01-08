@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div id="app" class="main">
+    <aa></aa>
+    <bb></bb>
+    <p>hello vue</p>
+</div>
+<script src="./vue.js"></script>
+<script>
+    var aa = {
+        template: "<h2>{{name}}</h2>",
+        data: function () {
+            return {
+                name: "我是组件aa"
+            }
+        }
+    }
+    var bb = {
+        template: "<p>{{name}}</p>",
+        data: function () {
+            return {
+                name: "我是组件bb"
+            }
+        }
+    }
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                name: '根组件'
+            }
+        },
+        components: {
+            aa, bb
+        }
+    })
+</script>
+</body>
+</html>

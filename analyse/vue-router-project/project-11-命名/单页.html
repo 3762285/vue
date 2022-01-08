@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .box {
+            width: 800px;
+            margin: 0 auto;
+            height: 100%;
+            background-color: wheat;
+            box-sizing: border-box;
+            padding: 5px 15px;
+            overflow: auto;
+        }
+
+        .nav {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="nav">
+        导航栏目
+    </div>
+    <h2>line-height的研究</h2>
+    <p>
+        字体占用尺寸如何计算？</br>
+        <span>其实是一个非常好的问题</span>
+    </p>
+    <p style="background-color: thistle">
+        <span>基线对齐abcdx</span><!--<img src="../assets/emoji.jpg"/>-->
+        <br/>
+        <span style="background-color: yellow">内联盒前端的幽灵节点的存在</span>
+    </p>
+    <p>
+        <span>通过字体软件进行测量的结果abcx</span><input id="middle-line" type="button" value="测试"/>
+    </p>
+    <p>
+        通过字体软件进行测量的结果
+    </p>
+    <p style="background-color: violet">
+        <span id="x">x</span><span style="font-size: 100px;background-color: olivedrab">abx</span><img
+            src="../assets/black.jpg"/><br/>
+        <span style="background-color: palevioletred">abcx</span><br/>
+        <input id='align' type="button" value="对齐方式"/>
+        <select id="select">
+            <option value="baseline">baseline</option>
+            <option value="10px">10px</option>
+            <option value="-10px">-10px</option>
+            <option value="1em">1ex</option>
+            <option value="-1em">-1ex</option>
+            <option value="50%">50%</option>
+            <option value="-50%">-50%</option>
+        </select>
+    </p>
+    <p>
+        通过字体软件进行测量的结果
+    </p>
+    <p style="background-color: thistle">
+        <span style="line-height: 100px;background-color: red">x</span><span style="font-size: 50px">ajax</span>
+    </p>
+    <p>
+        <i>通过字体软件进行测量的结果</i>
+    </p>
+    <p>
+        <span style="font-size: 100px;background-color: violet">abcdefghijx</span>
+    </p>
+    <p>
+        通过字体软件进行测量的结果
+    </p>
+    <p>
+        通过字体软件进行测量的结果
+    </p>
+    <p>
+        通过字体软件进行测量的结果
+    </p>
+    <script>
+        var $ = (id) => document.getElementById(id)
+        $('middle-line').addEventListener('click', function (event) {
+            alert('ok')
+        })
+        !function () {
+            var x = $('x')
+            var sel = $('select')
+            sel.addEventListener('change', function (event) {
+                x.style.verticalAlign = this.value
+            })
+        }()
+
+    </script>
+
+</div>
+</body>
+</html>

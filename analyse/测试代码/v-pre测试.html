@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div :hello.prop='t2' id="app" class="main">
+    <p :hello="t2">绑定t2</p>
+    <p :has="has">{{title}}</p>
+    <a :href="url">链接地址</a>
+    <button @click="changeUrl">改变链接</button>
+</div>
+<script src="./vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                title: "vue学习",
+                footer: '2021年11月',
+                has: true,
+                t2: 'peter',
+                url: "https://www.baidu.com"
+            }
+        },
+        methods: {
+            changeUrl() {
+                this.url = 'http://www.fhdq.net/'
+            }
+        }
+    })
+</script>
+</body>
+</html>

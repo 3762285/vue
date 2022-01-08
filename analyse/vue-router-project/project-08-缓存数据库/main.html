@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .store {
+            width: 800px;
+            margin: 0 auto;
+            background-color: wheat;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="store">
+    <h2>书籍管理系统v1.0</h2>
+    <div id="check"></div>
+    <div><span>书名：</span><input type="text"/></div>
+    <div>
+        <span>类别：</span>
+        <select>
+
+        </select>
+    </div>
+    <div><span>出版日期：</span>
+        <input type="text"/>
+    </div>
+</div>
+<script>
+    var $ = (id) => document.getElementById('id')
+    var check = $('check')
+    var db = undefined
+    window.onload = function (event) {
+        db = openDatabase('store4', '1.0', 'my book store', 1024 * 1024 * 1024 * 1024, function (db) {
+            console.log(db)
+        })
+    }
+    /*    window.addEventListener('load', function (event) {
+
+        })*/
+</script>
+</body>
+</html>

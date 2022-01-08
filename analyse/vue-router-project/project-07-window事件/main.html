@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="compute">坐标数据</button>
+<script>
+    window.onclick = function (evt) {
+        console.log(`(${evt.clientX},${evt.clientY})`)
+    }
+    window.onblur=function () {
+        console.log('失去焦点')
+    }
+    window.onfocus=function () {
+        console.log('获得焦点')
+    }
+/*    window.onbeforeunload=function (e) {
+        return e.returnValue='hello'
+    }*/
+</script>
+</body>
+</html>

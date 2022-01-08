@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script src="./vue.js">
+</script>
+<script type="x-template" id="childslot">
+    <div>
+        <slot name="fixed"></slot>
+        <slot></slot>
+    </div>
+</script>
+<script type="x-template" id="main">
+    <div>
+        <child>
+            <h1 slot="fixed">我是h1,只能到固定的位置</h1>
+            <p>而我无处不在</p>
+        </child>
+    </div>
+</script>
+<script>
+    const child = {
+        template: "#childslot"
+    }
+    new Vue({
+        el: "#app",
+        template: "#main",
+        components: {child}
+    })
+</script>
+</body>
+</html>

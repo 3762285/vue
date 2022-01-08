@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../vue.js"></script>
+<title>vue基础扩展4---$parent属性</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <my-child></my-child>
+</div>
+
+<script>
+    // 概述：在父子层级组件中，当某组件挂载时，可以通过$mount函数内，通过$parent
+    // 找到它挂载到的父组件，并且还可以通过$children找到挂载到它身上的子组件
+
+    // 1、案例演示
+    // 说明：先挂载子组件MyChild，它的$parent是MyChild,它的子组件是MyChildA和MyChildB，再挂载
+    // el为#app的vm实例，它没有父节点了，它的子节点是MyChild。
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'root'
+        },
+        mounted() {
+            console.log("父组件挂载")
+            console.log(this.$parent, '父') // 没有父组件
+            console.log(this.$children, '子') // MyChild
+        },
+        components: {
+            'MyChild': {
+                template: `
+                    <div>{{msg}}
+                        <my-child-a></my-child-a>
+                        <my-child-b></my-child-b>
+                    </div>`,
+                data() {
+                    return {
+                        msg: 'MyChild'
+                    }
+                },
+                mounted() {
+                    console.log('子组件挂载')
+                    console.log(this.$parent, '父') // MyChild
+                    console.log(this.$children, '子') // MyChildA MyChildB
+                },
+                components: {
+                    'MyChildA': {
+                        template: `
+                            <div>{{msg}}</div>`,
+                        data() {
+                            return {
+                                msg: 'MyChildA'
+                            }
+                        },
+                    },
+                    'MyChildB': {
+                        template: `
+                            <div>{{msg}}</div>`,
+                        data() {
+                            return {
+                                msg: 'MyChildB'
+                            }
+                        },
+                    },
+                },
+            },
+        }
+    });
+</script>
+</body>
+</html>

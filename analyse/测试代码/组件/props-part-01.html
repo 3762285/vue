@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height:100%;
+            margin:0;
+            background: lightblue;
+        }
+        #app{
+            height:100%;
+            box-sizing: border-box;
+            border:10px solid black;
+            margin:0;
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<!--    <person msg="hello"></person>
+    <person></person>-->
+    <h2>hello vue</h2>
+</div>
+<script src="../vue.js"></script>
+<!--<template id="child">
+        <h3>{{msg}}</h3>
+</template>
+<script>
+    let Person=Vue.extend({
+        data(){
+            return{
+                name:"person"
+            }
+        }
+    })
+    Vue.mixin({
+        methods:{
+            fromRoot:function () {
+                console.log('root')
+            }
+        }
+    })
+    Person.options.custom='hello person'
+    var child=new Person({
+        data(){
+            return{
+                name:"child"
+            }
+        }
+    })
+
+    let vm = new Vue({
+        el: "#app",
+/*        data() {
+            return {
+                name: "tinaluo",
+                role: "admin"
+            }
+        },*/
+        components: {
+            person:{
+                props:{
+                    msg:{
+                        type:String,
+                        default:"msg的默认值"
+                    }
+                },
+                template:"#child"
+            }
+        }
+    })
+</script>-->
+</body>
+</html>

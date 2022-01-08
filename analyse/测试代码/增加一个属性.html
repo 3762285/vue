@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-for="(val,key,i) in  user">key:{{key}},value:{{val}},索引:{{i}}</div>
+    <div :style="myclass">测试div</div>
+    <button class="btn" @click="btn3Click()">为data新增属性</button>
+</div>
+<script src="./vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                title: "info",
+                user: {
+                    age: 20,
+                    name: 'tianya'
+                },
+                myclass: {
+                    height: '50px',
+                    width: '200px',
+                    border:'1px solid black'
+                }
+            }
+        },
+        methods: {
+            btn3Click: function () {
+                //var h = this.myclass.height.replace(/[^0-9]/ig,"")
+                var h=parseInt(this.myclass.height)
+                h += 10
+                this.myclass.height = `${h}px`
+                //Vue.set(this.user, 'address', '广州')
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <Child>
+        <template v-slot:demo>来组父组件的内容</template>
+    </Child>
+</div>
+<script src="../vue.js"></script>
+
+<script type="x/template" id="child">
+    <div class="slot-demo">
+        <p>hello child</p>
+        <slot name="title"></slot>
+        <slot name="demo">this is a demo slot</slot>
+    </div>
+</script>
+
+<script>
+    new Vue({
+        el:"#app",
+        components:{
+            Child:{
+                template:"#child"
+            }
+        }
+    })
+</script>
+</body>
+</html>

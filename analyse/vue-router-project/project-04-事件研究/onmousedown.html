@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div id="box" style="background-color: skyblue">
+        box
+    </div>
+</div>
+<script>
+    var $ = (id) => document.getElementById(id)
+    var box = $('box')
+    var isdown = false
+    box.addEventListener('mousedown', function (e) {
+        isdown = true
+    })
+    window.addEventListener('mousemove', function () {
+        if (!isdown) {
+            return
+        }
+        var w = box.offsetWidth
+        box.style.width = `${--w}px`
+    })
+    window.addEventListener('mouseup', function () {
+        isdown = false
+    })
+</script>
+</body>
+</html>

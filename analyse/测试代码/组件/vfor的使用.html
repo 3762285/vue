@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .price-red {
+            color: red
+        }
+
+        .price-red-bold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<script type="text/template" id="main">
+    <div id="box">
+        <div v-for="item of msg">
+            名称:{{item.title}},价格:{{item.price}},产地:{{item.address}}
+        </div>
+        <ul>
+            <li v-for="item of msg">
+                名称:{{item.title}},价格:{{item.price}},产地:{{item.address}}
+            </li>
+        </ul>
+    </div>
+</script>
+<div id="app">
+
+</div>
+<script src="../vue.js"></script>
+<script type="text/template" id="child">
+    <div id="c2">
+        <h2>child组件</h2>
+    </div>
+</script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        template: "#main",
+        data() {
+            return {
+                msg: [
+                    {title: '苹果', price: 20, address: '广东省'},
+                    {title: '桔子', price: 10, address: '广西'}
+                ]
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

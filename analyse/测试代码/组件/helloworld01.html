@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/template" id="main">
+    <div id="box" :class="box">
+        <p>这是我的{{name}},很高兴认识你！</p>
+    </div>
+</script>
+<div id="app" c2="yes">
+    <circle></circle>
+    <!--<component :is="role"></component>-->
+    <div address="gz" is="admin"></div>
+    <component is="admin"></component>
+<!--    <span>111</span>-->
+    <p>{{name}}</p>
+<!--    <span>22</span>-->
+</div>
+<script src="../vue.js"></script>
+<script type="text/template" id="child">
+    <div id="c2">
+        <h2>child组件</h2>
+    </div>
+</script>
+<script>
+    Vue.component("admin",{
+        template:"<h2>admin组件</h2>"
+    })
+    let vm = new Vue({
+        el: "#app",
+        //template: "#main",
+        data() {
+            return {
+                name:"tinaluo",
+                role:"admin"
+            }
+        },
+/*        components:{
+            admin:{
+                template:"<h2>管理员页面</h2>"
+            }
+        }*/
+    })
+</script>
+</body>
+</html>

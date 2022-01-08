@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <input type="text" name="username" value="ajanuw" />
+    <br />
+    <input type="text" name="passworld" value="123456" />
+    <br />
+    <button type="submit">Submit</button>
+</form>
+<script>
+    document.forms[0].addEventListener("formdata", (e) => {
+        e.formData.append("github", "https://github.com/januwA");
+        //alert(JSON.stringify(Object.fromEntries(e.formData)));
+    });
+    window.onformdata=function () {
+       // console.log('onformdata')
+        alert('onformdata')
+    }
+</script>
+</body>
+</html>
+

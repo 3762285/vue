@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" class="main">
+    <input :[hello]="vue"/>
+    {{message}}
+    <span v-pre>{{message}}</span>
+    <input v-mybind/>
+</div>
+<script src="./vue.js"></script>
+<script>
+
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                count: 1,
+                message: 'hello'
+            }
+        },
+        methods: {
+            send(msg, event) {
+                console.log(event)
+            }
+        },
+        watch: {
+            count: function () {
+                console.log("count执行")
+            }
+        },
+        directives: {
+            mybind: {
+                bind: function (el) {
+                    el.value = "hello vue"
+                }
+            }
+        }
+    })
+    vm.count = 20
+</script>
+</body>
+</html>

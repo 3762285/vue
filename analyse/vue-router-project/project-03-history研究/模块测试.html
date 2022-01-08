@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="ultra-test">极限测试</button>
+<button id="count">计数测试</button>
+<input type="text" id="msg"/>
+<!--
+    此处，将script定义为module
+-->
+<script type="module">
+    import vio from './mod.js'
+    $('ultra-test').onclick = vio.show
+    let msg = $('msg')
+    $('count').onclick = () => {
+        var c = vio.count()
+        msg.value=c
+
+    }
+
+    function $(id) {
+        return document.getElementById(id)
+    }
+</script>
+</body>
+</html>

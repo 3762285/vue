@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app" style="background-color: azure">
+    <!--    <h1>Hello App!</h1>
+        <p>
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+        </p>
+        <a href="/login">登录</a>-->
+    <router-view></router-view>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<template id="login">
+    <div>
+        <h2>登录页面</h2>
+        <button @click="doLogin">Login</button>
+        <router-link to="/foo">Go to Foo</router-link>
+    </div>
+</template>
+<script>
+    const Foo = {template: '<div>foo</div>'}
+    const Bar = {template: '<div>bar</div>'}
+    const Login = {template: '<div>登录界面</div>'}
+    const Main = {template: '<h2>主页</h2>'}
+
+    var token;
+    const routes = [
+        {path: '/foo', component: Foo},
+        {path: '/bar', component: Bar},
+        {
+            path: '/login', component: {
+                template: "#login",
+                methods: {
+                    doLogin() {
+                        this.$router.push("/")
+                    }
+                }
+            }
+        },
+        {path: '/', component: Main},
+        {
+            path: '*', component: {
+                template: "<h2>404页</h2>"
+            }
+        }
+    ]
+
+    const router = new VueRouter({
+        routes,
+        mode: "history"
+    })
+
+    //导航前置守卫
+    router.beforeEach(function (to, from, next) {
+        console.log(`to.path=${to.path},from.path=${from.path}`)
+        if (token == undefined) {
+            token = "admin"
+            next('/login')
+        } else {
+            next()
+        }
+    })
+    const app = new Vue({
+        router
+    }).$mount('#app')
+
+</script>
+</body>
+</html>

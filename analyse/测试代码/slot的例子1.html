@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot</title>
+    <style type="text/css">
+        .panel {
+            width: 400px;
+            border: 1px solid #ccc;
+        }
+
+        .panel > * {
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .footer {
+            border: none;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div id="app">
+    <Child>
+        <slot name="content">{{title}}</slot>
+        <span style="color:red">hello world</span>
+    </Child>
+</div>
+
+
+<script src="./vue.js"></script>
+<template id="child">
+    <div>
+        <div class="panel">
+            <div slot="title"></div>
+            <div slot="content"></div>
+            <div slot="footer"></div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                title: "来自父组件的title",
+                content: "来自父组件的content",
+                footer: "来自父组件的footer"
+            }
+        },
+        components: {
+            Child: {
+                template: "#child"
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

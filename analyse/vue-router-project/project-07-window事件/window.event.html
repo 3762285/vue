@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <h2 id="title">事件处理</h2>
+        <input id="query" type="button" value="点击"/>
+    </div>
+    <div>
+        <input id="patch" type="button" value="分发事件"/>
+    </div>
+</div>
+
+<script>
+    let query = document.getElementById('query')
+    let title = document.getElementById('title')
+    query.addEventListener('click', function (evt) {
+        title.style.display = 'none'
+        evt.stopPropagation()
+    })
+    window.addEventListener('click', function (evt) {
+        console.log('收到消息！')
+    })
+    window.addEventListener('receive', function (evt) {
+        console.log('receive事件执行')
+    })
+    //==================================================
+    /*
+        注意：自定义事件中的bubbles默认=false
+     */
+    let patch = document.getElementById('patch')
+    patch.addEventListener('click', function () {
+        console.log('patch执行click事件')
+        var e = new Event('receive', {
+            // bubbles:true
+        })
+        console.log(`e.bubbles=${e.bubbles}`)
+        patch.dispatchEvent(e)
+    })
+
+    var e = new Event('click')
+    patch.dispatchEvent(e)
+</script>
+</body>
+</html>

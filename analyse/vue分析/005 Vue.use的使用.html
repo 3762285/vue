@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>{{name}}</p>
+</div>
+<script src="./vue.js"></script>
+<script>
+
+    let v2=new Vue({})
+    v2.$set({
+        data:"ok"
+    },"data",'hello')
+    Vue.extend({
+        data:function () {
+            return{
+
+            }
+        }
+    })
+    let o = {
+        //插件的一些数据定义..
+        data() {
+            return {
+                a: 1,
+                b: 2
+            }
+        },
+        plugin() {
+            console.log('自定义的处理逻辑...')
+        },
+        install(Vue) {
+            console.log(arguments)
+            Vue.prototype.$myplugin = this.plugin
+            console.log('注册')
+        }
+    }
+    Vue.use(function () {
+        console.log("ok")
+    })
+    Vue.use(o,1,2,3) //重复定义
+    Vue.use(o)
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                name: "app"
+            }
+        }
+    })
+    vm.$myplugin()
+</script>
+</body>
+</html>

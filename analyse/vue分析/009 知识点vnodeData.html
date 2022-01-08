@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="vue.js"></script>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                age: 20
+            }
+        },
+        render: (h, ctx) => {
+            let header = ctx.scopedSlots.header()
+            console.log(header)
+            const dom = h('div', ctx.data, [header, ctx.scopedSlots.default()])
+            return dom
+        }
+    })
+</script>
+</body>
+</html>

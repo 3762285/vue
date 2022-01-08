@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="text" pattern="[a-zA-Z]+" oninvalid="setCustomValidity('输入格式有误！')"/>
+    <input type="submit" value='提交'/>
+</form>
+
+<script>
+    /*    window.oninput = function () {
+            alert('oninput事件')
+        }*/
+    window.oninvalid=function () {
+        console.log('ok')
+        alert('验证失败！')
+    }
+</script>
+</body>
+</html>

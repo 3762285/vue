@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-el="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+</head>
+<body>
+<template id="demo">
+    <h2>组件对象</h2>
+</template>
+<div id="app">
+    <h2 rel='myh2'>DOM对象</h2>
+    <button @click="getDom">获取DOM对象</button>
+    <hr>
+    <demo ref='mycom'></demo>
+    <button @click="getCom">获取组件对象</button>
+</div>
+<script src="vue.js"></script>
+<script>
+    //创建Vue对象
+    let vm=new Vue({
+        el: '#app',
+        methods: {
+            getDom() {
+                console.log(this.$els.myh2);
+            },
+            getCom() {
+                console.log(this.$refs.mycom);
+            }
+        },
+        components: {
+            'demo': {
+                template: '#demo'
+            }
+        }
+    });
+</script>
+</body>
+</html>
+

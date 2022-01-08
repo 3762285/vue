@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div id="outer">
+        <input type="button" id="test" value="按钮"/>
+    </div>
+    <script>
+        var obj = document.getElementById('test')
+        var handle = {
+            count: 0,
+            handleEvent(evt) {
+                console.log('收到消息！')
+                this.count++
+            }
+        }
+        obj.addEventListener('click', handle)
+    </script>
+</div>
+</body>
+</html>

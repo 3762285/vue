@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>key关键字的使用</title>
+
+    <script src="lib/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <div>
+        <label>id</label><input type="text" v-model="id">
+        <label>name</label><input type="text" v-model="Name">
+        <input type="button" value="添加" @click="Add">
+    </div>
+
+    <p v-for="item in list" v-bind:key="item.id">
+        <input type="checkbox">
+        {{item.id}}----{{item.Name}}
+    </p>
+
+
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            id: '',
+            Name: '',
+            list: [
+                { id: 1, Name: '张三' },
+                { id: 2, Name: '李四' },
+                { id: 3, Name: '王五' },
+                { id: 4, Name: '赵六' }
+            ]
+        },
+        methods: {
+            Add() {
+                // 在数组对象的尾部添加一个新的对象
+                // this.list.push({id:this.id, Name:this.Name})
+                //在数组对象的头部添加一个新的对象
+                this.list.unshift({id:this.id,Name:this.Name})
+            }
+
+        }
+    })
+</script>
+</body>
+
+</html>

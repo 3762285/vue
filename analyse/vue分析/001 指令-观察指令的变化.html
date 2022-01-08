@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-if="isExist" v-my-directive="param"></div>
+</div>
+<script src="./vue.js"></script>
+<script>
+    Vue.directive('my-directive', {
+        bind() {
+            console.log('bind', arguments)
+        },
+        update(newval, oldval) {
+            console.log('update', newval, oldval)
+        },
+        unbind() {
+            console.log('unbind', arguments)
+        }
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            param: "first",
+            isExist: true
+        }
+    })
+</script>
+</body>
+</html>

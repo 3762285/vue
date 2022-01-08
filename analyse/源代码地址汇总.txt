@@ -1,0 +1,11 @@
+# b站讲解Vue2.x的几个核心原理（重点教程）：
+https://www.bilibili.com/video/BV1op4y1h7Fv?p=17
+视频附带源码及PPT地址：
+https://codechina.csdn.net/mirrors/wanghuan19961020/Vue2.x-Study-Notes?utm_source=csdn_github_accelerator
+
+
+# snabbdom运行环境详细配置
+https://blog.csdn.net/qq_40745143/article/details/117808021
+
+
+

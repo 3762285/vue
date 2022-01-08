@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span>{{b.c}}</span>
+    <span>{{e.f.g}}</span>
+    <input type="text" v-model="b.c"/>
+    <input id='changeValue' type="button" value="改变值" />
+</div>
+<script src="./vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                a: 10,
+                b: {
+                    c: 20
+                },
+                d: 30,
+                e:{
+                    f:{
+                        g:'hello'
+                    }
+                }
+            }
+        }
+    })
+    let btn=document.getElementById('changeValue')
+    btn.onclick=function () {
+        vm.$data=function () {
+            return{
+                a: 100,
+                b: {
+                    c: 200
+                },
+                d: 300,
+                e:{
+                    f:{
+                        g:'hello'
+                    }
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

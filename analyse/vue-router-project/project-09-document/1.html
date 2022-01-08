@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>
+    document对象
+</h2>
+<div>
+    <input type="button" id="menu-select-all" value="选择all"/>
+</div>
+<p>
+    段落展示
+    hello
+</p>
+<div>
+    <span style="font-size: 16px">段落展示</span>
+    <span style="font-size:1.5em">段落展示 1.5em</span>
+    <span style="font-size:24px">段落展示 24px</span>
+</div>
+<div id="box" class="wrap extend">
+    345
+    <h2>hello h5!</h2>
+    <div style="font-size: 24px;font-weight: bold">hello h5</div>
+    <div>
+        900
+        <h3>hello</h3>
+    </div>
+</div>
+<div style="background-color: violet">
+    <div style="margin:1em">16px</div>
+    <div style="font-size:20px;margin:1em">20px</div>
+</div>
+<h2>footer</h2>
+<script>
+    var $ = (id) => document.getElementById(id)
+    $('menu-select-all').addEventListener('click', function () {
+        document.execCommand('selectall')
+    })
+    var e = $('box')
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .price-red {
+            color: red
+        }
+
+        .price-red-bold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<script type="text/template" id="main">
+    <div id="box" :class="box">
+        <p>这是我的{{name}},很高兴认识你！</p>
+        <p normalAttr="30">normal</p>
+        <p :class="style">价格20元</p>
+        <!--<p v-bind:inner-style.camel="innerStyle">hello</p>-->
+        <p v-bind:id.prop="custom">custom</p>
+        <p v-bind:inner-text.prop="msg"></p>
+        <p v-bind:address.prop="address" id="address">地址</p>
+        <p v-bind:text-content.prop="msg">hello</p>
+        <p :custom="msg">hello vue</p>
+        <component is="child"></component>
+        <component is="content" id="comp"></component>
+        <!--<child></child>-->
+        <div>
+            <button @click="toggle">切换组件</button>
+        </div>
+    </div>
+</script>
+<div id="app">
+
+</div>
+<script src="../vue.js"></script>
+<script type="text/template" id="child">
+    <div id="c2">
+        <h2>child组件</h2>
+    </div>
+</script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        template: "#main",
+        data() {
+            return {
+                msg: '文本内容',
+                a: 20,
+                b: 10,
+                guest: false,
+                box: 'c2',
+                arg: "content",
+                content: "child",
+                address: "GZ",
+                background: 'red',
+                custom: '10',
+                style: "price-red"
+            }
+        },
+        methods: {
+            toggle() {
+                //this.content = "c2"
+                //this.msg += ',添加一点新内容'
+                this.style = "price-red-bold"
+            }
+        },
+        components: {
+            child: {
+                template: "#child",
+                data: function () {
+                    return {
+                        a: 20
+                    }
+                }
+            },
+            c2: {
+                template: "<p>我是C2组件</p>"
+            }
+        }
+    })
+</script>
+</body>
+</html>

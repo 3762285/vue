@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <layout>
+            <h1 slot="header">{{title}}</h1>
+            <p>{{msg}}</p>
+            <p slot="footer">{{footer}}</p>
+        </layout>
+    </div>
+</div>
+
+
+<script src="../vue.js"></script>
+
+<script>
+    Vue.component({
+        template: "<h2>{{title}}</h2>",
+        data: function () {
+            return {
+                title: "hello vue"
+            }
+        }
+    })
+</script>
+<script>
+    Vue.component('Layout', {
+        template: `<div class="container">
+    <header>
+        <slot name="header">默认header</slot>
+    </header>
+    <main>
+        <slot>默认main</slot>
+    </main>
+    <footer>
+        <slot name="footer">默认footer</slot>
+    </footer>
+</div>`
+    })
+
+    let vm = new Vue({
+        el: '#app',
+        template: ``,
+        data: {
+            title: '这是标题',
+            msg: '这是内容',
+            footer: '这是footer'
+        }
+    })
+</script>
+</body>
+</html>

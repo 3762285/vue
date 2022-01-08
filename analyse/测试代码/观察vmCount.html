@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div id="example">
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+<script src="./vue.js"></script>
+<script>
+    var data = {counter: 1}
+    Vue.component('my-component', {
+        template: '<div>{{counter}}</div>',
+        data: function () {
+            return data
+        }
+    })
+    var app2 = new Vue({
+        el: "#example"
+    })
+</script>
+</body>
+</html>

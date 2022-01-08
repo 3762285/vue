@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div id="outer" onclick="outer()">
+        <input type="button" id="test" value="按钮"/>
+    </div>
+    <script>
+        var obj = document.getElementById('test')
+        obj.addEventListener('click', function (evt) {
+            console.log(this)
+            console.log('目标收到消息')
+        })
+/*        obj.addEventListener('click',(evt)=>{
+            console.log(this)
+            console.log('目标收到消息')
+        })*/
+        window.addEventListener('click', function (evt) {
+            console.log('window收到消息！')
+            //evt.stopPropagation()
+        }, true)
+        window.addEventListener('click', function (evt) {
+            console.log('冒泡阶段window再次收到消息...')
+        })
+
+        function outer(evt) {
+            console.log('outer只在冒泡阶段执行')
+        }
+
+        var html = document.getElementById('html')
+        html.addEventListener('click', function (evt) {
+            console.log('html收到消息')
+        })
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p id="p1">p1</p>
+    <p id="p2">p2</p>
+    <p id="p3">p3</p>
+</div>
+<button id="btn_change_text">使用text改变DOM</button>
+<button id="btn_change_children">使用children改变DOM</button>
+<script>
+    let app = document.getElementById("app")
+    console.log(app.children)
+    console.log(app.textContent) //textContent和innerText的区别参考同目录测试代码
+
+    var $btn_change_text = document.getElementById('btn_change_text')
+
+    /*
+        使用innerText会将节点的整个内部进行替换
+     */
+    $btn_change_text.onclick = function () {
+        app.innerText = 'hello vue'
+        //app.textContent='hello vue'
+    }
+</script>
+</body>
+</html>

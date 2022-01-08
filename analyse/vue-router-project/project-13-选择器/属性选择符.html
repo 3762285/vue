@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [title] {
+            border: 1px solid blue;
+        }
+
+        span[class='fruit'] {
+            background-color: violet;
+        }
+
+        #banana {
+            background-color: blanchedalmond;
+        }
+
+        .fruit {
+            background-color: yellow;
+        }
+
+        [col~='red'] {
+            color: red;
+        }
+
+        [col~='yellow'] {
+            color: yellow;
+        }
+
+        [col~='black'][col~='grey']:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<img src="../assets/cat2.jpg" title="cat"/>
+<span style="text-decoration: underline wavy">hello html</span>
+<div>
+    <span class="fruit">apple</span>
+    <p id='banana' class="fruit">banana</p>
+</div>
+<div>
+    <button col="red">红</button>
+    <button col="yellow">黄</button>
+    <button col="blue">蓝</button>
+    <button col="black grey">红</button>
+    <button col="black grey blue">黑灰蓝色</button>
+</div>
+</body>
+</html>

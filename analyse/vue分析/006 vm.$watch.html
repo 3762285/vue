@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="./vue.js"></script>
+<script>
+/*    let vm=new Vue({
+        el:"#app",
+        data:function () {
+            return{
+                a:{
+                    b:{
+                        c:10
+                    }
+                }
+            }
+        }
+    })
+    vm.$watch('a.b.c',function (newval,oldval) {
+        console.log(newval,oldval)
+    })
+    vm.a.b.c=20*/
+    // v1
+    let v1=new Vue({
+        data: {
+            count: 1
+        },
+        watch: {
+            count(){
+                console.log('watch执行...')
+            }
+        },
+        methods: {
+            handleCountChange(val) {
+                console.log('count改变了')
+            }
+        }
+    })
+    v1.count=2
+//
+    let v2=new Vue({
+        data: {
+            count: 1
+        },
+        watch: {
+            count: "handleCountChange"
+        },
+        methods: {
+            handleCountChange(val) {
+                console.log('count改变了')
+            }
+        }
+    })
+    v2.count=2
+</script>
+</body>
+</html>
+
+<!--
+形式一：传值函数
+
+new Vue({
+    data:{
+        count:1
+    },
+    watch:{
+        count(){
+            console.log('count改变')
+        }
+    }
+})
+
+形式二：传数组
+
+new Vue({
+    data: {
+        count: 1
+    },
+    watch: {
+        count: [
+            () => {
+                console.log('count发生变化..')
+            },
+            () => {
+                console.log('执行第二个回调...')
+            }
+        ]
+    }
+})
+
+形式三：传值字符串
+new Vue({
+    data: {
+        count: 1
+    },
+    watch: {
+        count: "handleCountChange"  //方法定义在methods中;
+    },
+    methods: {
+        handleCountChange(val) {
+            console.log('count改变了')
+        }
+    }
+})
+
+形式四：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->

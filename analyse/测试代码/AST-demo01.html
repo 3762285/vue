@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p :key="unique02">v-pre使用</p>
+    <h2>hello vue</h2>
+</div>
+<script src="./vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                count: 1,
+                message: 'hello'
+            }
+        }
+    })
+</script>
+</body>
+</html>

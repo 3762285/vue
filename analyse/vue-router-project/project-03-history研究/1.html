@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>页面1</h2>
+<a href="2.html">链接2</a>
+<div>
+    <button id="test1">状态1</button>
+    <button id="test2">状态2</button>
+    <button id="test3">状态3</button>
+</div>
+<script>
+    /*
+    首先进入1.html，因此history.length==2
+    */
+    console.log(`history length=${history.length},state=${history.state}`)
+
+    //push一个状态
+    window.history.pushState({page: 1}, 'title 1', '?login')
+
+    //此时history=3,且状态在{page:1}处
+    console.log(`history length=${history.length},state=${history.state}`)
+
+    /*
+        特别说明：
+        在状态切换中，不用浏览器的前进后退键，而是用代码形式如：
+        history.back()或history.forward()进行调试
+     */
+
+</script>
+</body>
+</html>

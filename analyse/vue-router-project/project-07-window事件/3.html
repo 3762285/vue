@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>W3Cschool教程(w3cschool.cn)</title>
+    <style>
+        #myDIV {
+            width: 100px;
+            height: 100px;
+            background: red;
+            -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+            transition: width 2s;
+        }
+
+        #myDIV:hover {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<p>鼠标移动到 div 元素上，查看过渡效果。</p>
+<div id="myDIV"></div>
+<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+<script>
+    let target = document.getElementById('myDIV')
+    //  Safari 3.1 到 6.0 版本代码
+    //target.addEventListener("webkitTransitionEnd", myFunction);
+    // 标准语法
+    //document.getElementById("myDIV").addEventListener("transitionend", myFunction);
+    function myFunction() {
+        this.innerHTML = "过渡事件触发 - 过渡已完成";
+        this.style.backgroundColor = "pink";
+    }
+
+    target.addEventListener('onwebkitanimationend', myFunction)
+</script>
+
+</body>
+</html>

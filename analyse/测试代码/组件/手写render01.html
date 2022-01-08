@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .price-red {
+            color: red
+        }
+
+        .price-red-bold {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<script type="text/template" id="main">
+    <div id="box" :class="box">
+
+    </div>
+</script>
+<div id="app">
+
+</div>
+<script src="../vue.js"></script>
+<script type="text/template" id="child">
+    <div id="c2">
+        <h2>child组件</h2>
+    </div>
+</script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        template: "#main",
+        data() {
+            return {
+                msg: '文本内容'
+            }
+        },
+        render(_c) {
+            return _c('div', {
+                props: {
+                    value: 'hello',
+                    innerText: 'hello vue'
+                },
+                style: {
+                    width: '500px',
+                    background: '#e563cb',
+                    height: '30px'
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>

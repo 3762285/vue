@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <admin avatar="hello.png"></admin>
+</div>
+<script src="../vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        //template: "#main",
+        data() {
+            return {
+                name: "tinaluo",
+                role: "admin",
+                r3: "R3"
+            }
+        },
+        components: {
+            admin: {
+                functional: true,
+                props: {
+                    avatar: {
+                        type: String
+                    }
+                },
+                render(h, context) {
+                    const {props} = context
+                    if (props.avatar) {
+                        return '<img src={props.avatar}></img>'
+                    }
+                    return '<img src="default-avatar.png"></img>'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5</title>
+    <link rel="shortcut icon" href="test.jpg" type="image/x-icon">
+    <style>
+        header, nav, section, article, aside, footer {
+            border: 3px solid gray;
+        }
+
+        .bgSection {
+            width: 300px;
+            border: 0px;
+            position: relative;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        header, nav, footer {
+            width: 300px;
+            height: 50px;
+
+        }
+
+        section, article {
+            width: 200px;
+            height: 100px;
+        }
+
+        aside {
+            width: 93px;
+            height: 206px;
+            position: absolute;
+            left: 206px;
+            top: 112px;
+        }
+
+        nav p, ul {
+            display: inline;
+        }
+
+        ul li {
+            display: inline;
+        }
+
+        p {
+            font-weight: bold;
+            color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+<section class="bgSection">
+    <header><p>&lt;header&gt;</p></header>
+    <nav>
+        <p>&lt;nav&gt;</p>
+        <ul>
+            <li><a href="">first</a></li>
+            |
+            <li><a href="">second</a></li>
+            |
+            <li><a href="">last</a></li>
+        </ul>
+    </nav>
+    <section class="section1">
+        <p>&lt;section&gt;</p>
+    </section>
+    <article>
+        <p>&lt;article&gt;</p>
+    </article>
+    <aside>
+        <p>&lt;aside&gt;</p>
+    </aside>
+    <footer>
+        <p>&lt;footer&gt;</p>
+    </footer>
+</section>
+</body>
+</html>

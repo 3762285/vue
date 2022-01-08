@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>hello</p>
+    <p>{{name}}</p>
+</div>
+<div id="app2">
+    {{app}}
+</div>
+
+<div id="app3">
+    <custom-component></custom-component>
+</div>
+<div id="app4">
+    {{name}}
+    {{take}}
+</div>
+<script src="./vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:function () {
+            return{
+                age:20,
+                name:'tianya'
+            }
+        }
+    })
+
+    var handler=function () {
+
+    }
+    handler._withStripped=true
+    var v4 = new Vue({
+        el: "#app4",
+        data() {
+            return {
+                name: 'vue'
+            }
+        }
+    })
+    if('_s1' in v4._renderProxy){
+        console.log("ok")
+    }
+    /*    var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    name: 'vue'
+                }
+            }
+        })*/
+    let v5 = new Vue({
+        el: "#app2",
+        render($createElement) {
+            return $createElement('div', {
+                id: "app2"
+            })
+        },
+        data() {
+            return {
+                app: "app2"
+            }
+        },
+        watch: {}
+    })
+
+    /*    let vm2 = new Vue({
+            el: "#app2",
+            data() {
+                return {
+                    name: "app2"
+                }
+            }
+        })
+
+        Vue.component('custom-component', {
+            render: function ($createElement) {
+                return $createElement('div')
+            }
+        })
+
+        var v3 = new Vue({
+            el: "#app3"
+        })*/
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+这里我定义了一个列表数据，我将通过三个不同的按钮来控制列表数据。
+调用方法：Vue.set( target, key, value )
+target：要更改的数据源(可以是对象或者数组)
+key：要更改的具体数据
+value ：重新赋的值
+-->
+<div id="app2">
+<!--    <p v-for="item in items" :key="item.id">
+        {{item.message}}
+    </p>-->
+    <p>{{age}}</p>
+    <button class="btn" @click="$btn_add_value()">动态赋值</button>
+    <br/>
+    <button class="btn" @click="btn3Click()">为data新增属性</button>
+</div>
+<script src="./vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app2",
+/*        data: {
+            items: [
+                {message: "Test one", id: "1"},
+                {message: "Test two", id: "2"},
+                {message: "Test three", id: "3"}
+            ]
+        },*/
+        data:function () {
+            return{
+                age:20
+            }
+        },
+        methods: {
+            $btn_add_value: function () {
+                //Vue.set(this.items, 0, {message: "Change Test", id: '10'})
+                Vue.set(this,'age',30)
+            },
+            btn3Click: function () {
+                var itemLen = this.items.length;
+                Vue.set(this.items, itemLen, {message: "Test add attr", id: itemLen});
+            }
+        }
+    });
+</script>
+</body>
+</html>

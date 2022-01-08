@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    </meta>
+</head>
+<body>
+<div class="test" id="test">
+    最外层文本
+    <div style="display:none">
+                <span>
+                    隐藏文本
+                </span>
+    </div>
+    <style>
+        style内部文本
+    </style>
+</div>
+<script type="text/javascript">
+    var $div_test = document.getElementById('test');
+    console.log("textContent输出: " + $div_test.textContent);
+    console.log("innerText输出: " + $div_test.innerText);
+
+    /*
+        差异
+            1. textContent会输出各种形式的文本,比如<span>内部文本,display:none隐藏元素的文本
+               而且输出也能保持文本在行内的占拉位置
+            2. innerText只输出最外层文本
+     */
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    {{message | capitalize | scape }}
+</div>
+<script src="./vue.js"></script>
+<script>
+    let vm=new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                message: 'hello'
+            }
+        },
+        created() {
+            console.log('created执行...')
+        },
+        beforeMount() {
+            console.log('beforeMount执行...')
+        },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            },
+            scape: function (value) {
+                console.log(value)
+            }
+        },
+        watch: {}
+    })
+</script>
+</body>
+</html>
