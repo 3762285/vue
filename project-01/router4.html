@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <div style="border:1px solid black">
+        <router-view></router-view>
+    </div>
+</div>
+<script type="module">
+    // import routes from "./router";
+    var Nav = {
+        template: '<h2>导航栏</h2>'
+    }
+    var Sidebar = {
+        template: '<div>sidebar</div>'
+    }
+    var Main = {
+        template: '<div>main</div>'
+    }
+
+    var constantRoutes = [
+        {
+            'path': "/",
+            'component': {
+                template: '<h1>主页面</h1>'
+            }
+        }, {
+            'path': '/login',
+            'component': {
+                template: '<h2>login</h2>'
+            }
+        }, {
+            'path': '/main',
+            'component': {
+                Nav, Sidebar, Main
+            }
+        },
+        {
+            'path': '/info',
+            'component': {
+                template: '<h2>info</h2>'
+            },
+            'redirect': '/login'
+        }, {
+            'path': '/bar',
+            component: {
+                template: "<h2>bar</h2>"
+            },
+            name: "BarLink",
+            children: [
+                {
+                    path: '/b1',
+                    name: "b1",
+                    component: {
+                        template: `<h2>b1</h2>`
+                    }
+                }, {
+                    path: '/b2',
+                    name: "b2",
+                    component: {
+                        template: `<h2>b2</h2>`
+                    }
+                }
+            ]
+        }, {
+            path: '/404',
+            component: {
+                template: '<h2>未找到页面</h2>'
+            }
+        },
+        {
+            path: '*',
+            redirect: '/404',
+        }]
+    const router = new VueRouter({
+        // mode: 'history',
+        routes: constantRoutes
+    })
+    var isAuthenticated = false
+
+    var whiteList = ['/login']
+    router.beforeEach((to, from, next) => {
+        if (isAuthenticated) {
+            next()
+        } else {
+            isAuthenticated = true
+            if (whiteList.indexOf(to.path) != -1) {
+                next()
+            } else {
+                next('/login')
+            }
+        }
+    })
+    const app = new Vue({
+        router,
+        computed: {
+            r() {
+                return this.$route
+            }
+        }
+    }).$mount('#app')
+</script>
+</body>
+</html>

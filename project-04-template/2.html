@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插槽</title>
+</head>
+<body>
+<!--
+  插槽相当于一个占位符，当没有内容传递过去的时候会显示插槽的内容，有内容时不会显示插槽的内容
+
+  具名插槽
+    一个组件中可以使用多个插槽,为了区分每一个插槽的位置可以添加名字
+      通过name属性设置名字
+    在父组件中使用具名插槽的时候需要把插入的内容放置在template节点中
+      使用v-slot:插槽的name值 进行绑定位置
+      v-slot可以简写为#
+    在既有具名插槽又有默认插槽的时候
+      如果不使用v-slot进行绑定name会把所有的内容都插入在默认位置
+ -->
+<div id="app">
+    <child>
+        <h5 style="color: deeppink;">我是一段话</h5>
+    </child>
+    <child>
+        <h5 style="color: deeppink;">我是一段话</h5>
+        <p style="color: deeppink; font-size: 0.8rem;">我是一段话</p>
+        <p style="color: deeppink; font-size: 12.8px;">我是一段话</p>
+    </child>
+    <child2>
+<!--        <template v-slot:t>
+            <h4 style="color: deeppink;">《三体》</h4>
+            <h5>作者：大刘</h5>
+        </template>-->
+        <template slot="t">
+            <h4 style="color: deeppink;">《三体》</h4>
+            <h5>作者：大刘</h5>
+        </template>
+       <!-- <h5 style="color: deeppink;" slot="t">《三体》</h5>-->
+        <template #p>
+            <p style="color: red;">￥39.28</p>
+        </template>
+        <p>不要回复，不要回复，不要回复......</p>
+    </child2>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        components: {
+            child: {
+                template: `
+          <div>
+            <p>我是一行话</p>
+            <slot>这是占位内容</slot>
+          </div>
+          `,
+            },
+            child2: {
+                template: `
+          <div>
+            <h5>此处的内容展示多个插槽</h5>
+            <div class="title">
+              <slot name="t">此处应该显示标题内容</slot>
+            </div>
+            <div class="price">
+              <slot name="p">此处显示价格</slot>
+            </div>
+            <div class="descriptions">
+              <slot>此处应该显示简介内容</slot>
+            </div>
+          </div>
+          `
+            }
+        }
+    })
+</script>
+</body>
+</html>

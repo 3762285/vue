@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <div style="border:1px solid black">
+        <router-view></router-view>
+    </div>
+</div>
+<script type="module">
+    Vue.component('Nav', {
+        template: `
+        <div style="padding:10px;width:200px">
+            <h2>nav组件</h2>
+            <div>
+                <a href="#/dashboard">dashboard</a>
+            </div>
+            <div>
+                <a href="#/form/index">form</a>
+            </div>
+            <div style="padding-left:20px">
+                <a href="#/form/java">java论坛</a>
+            </div>
+            <div>
+                <a href="#/manager">后台管理</a>
+            </div>
+            <div>
+                <a href="#/bar/b2">失效的链接</a>
+            </div>
+        </div>
+        `
+    })
+    Vue.component('Sidebar', {
+        template: `
+            <div style="border:1px solid black;padding:10px">
+                <h2>sidebar组件</h2>
+                <input @click='handleLogout()' type="button" value="退出登录"/>
+            </div>
+        `,
+        methods: {
+            handleLogout() {
+                isAuthenticated = false
+                this.$router.push('/login')
+            }
+        }
+    })
+    Vue.component('Main', {
+        template: `
+            <div style="flex:1;padding:10px;background-color:lightyellow;">
+                <sidebar></sidebar>
+                <h2>Main组件</h2>
+                <router-view style="padding:10px;border:1px dashed black"></router-view>
+            </div>
+        `
+    })
+
+    var Layout = Vue.component('Layout', {
+        template: `
+        <div style="display: flex">
+            <Nav></Nav>
+            <Main ></Main>
+        </div>
+        `
+    })
+
+    var dashboard_view = Vue.component('Dashboard', {
+        template: '<h2>dashboard仪表盘页面</h2>'
+    })
+
+    var Form = Vue.component('Form', {
+        template: '<h2 style="background-color: yellow">form页面</h2>'
+    })
+
+    // ==============================================================================
+
+    var isAuthenticated = false
+
+    var constantRoutes = [
+        {
+            'path': "/",
+            redirect: '/dashboard',
+            component: Layout,
+            children: [
+                {
+                    path: 'dashboard',
+                    name: "Dashboard",
+                    component: dashboard_view
+                }
+            ]
+        }, {
+            path: '/form',
+            component: Layout,
+            children: [
+                {
+                    path: 'index',
+                    name: 'Form',
+                    component: Form
+                }, {
+                    path: 'java',
+                    name: 'Java',
+                    component: {
+                        template: '<h2>java论坛</h2>'
+                    }
+                }
+            ]
+        },{
+            path:'/manager',
+            component: Layout
+        },
+        {
+            'path': '/login',
+            'component': {
+                template: `
+                    <div>
+                        <h2>登录/login</h2>
+                        <div>
+                            <input @click="handleLogin()" type="button" value="我要登录"/>
+                        </div>
+                    </div>
+                `,
+                methods: {
+                    handleLogin() {
+                        isAuthenticated = true
+                        this.$router.push('/')
+                    }
+                }
+            }
+        },
+        {
+            path: '/404',
+            component: {
+                template: '<h2>未找到页面</h2>'
+            }
+        },
+        {
+            path: '*',
+            redirect: '/404',
+        }]
+
+    const router = new VueRouter({
+        routes: constantRoutes
+    })
+
+    var whiteList = ['/login']
+
+    router.beforeEach((to, from, next) => {
+        if (isAuthenticated) {
+            if(to.path=='/login'){
+                /*已经登录就不要再回去了,转到'/' */
+                next('/')
+            }else{
+                next()
+            }
+        } else {
+            /*
+                没有登录
+             */
+            if (whiteList.indexOf(to.path) != -1) {
+                next()
+            } else {
+                next('/login')
+            }
+        }
+    })
+    const app = new Vue({
+        router,
+        computed: {
+            r() {
+                return this.$route
+            }
+        }
+    }).$mount('#app')
+</script>
+</body>
+</html>

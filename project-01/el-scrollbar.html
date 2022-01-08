@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        #app {
+            width: 500px;
+            margin: 0 auto;
+        }
+        .scrollbar-wrapper{
+            overflow-x: hidden;
+        }
+
+       /* 设置el-scrollbar__wrap，隐藏横向滚动条*/
+        .el-scrollbar__wrap{
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<div style="height: 300px;background-color: silver;overflow: hidden">
+    <el-scrollbar style="overflow-x:hidden;height: 100%">
+        <div>
+            <p v-for="(item, index) in 50" :key="index">{{index}} 这里是一些文本。</p>
+        </div>
+    </el-scrollbar>
+</div>
+</div>
+</body>
+
+<script src="../lib/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {visible: false}
+        }
+    })
+</script>
+</html>

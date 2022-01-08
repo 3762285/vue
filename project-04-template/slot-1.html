@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot</title>
+</head>
+<body>
+<div id="app">
+    <h3>我是父组件</h3>
+    <item slot="title" icon="i2" title="t2"></item>
+    <child>
+        <!--准备替换的html片段位置随意，因为此处使用具名slot-->
+        <!--内容在父组件中定义为变量-->
+        <p slot="content">{{content}}</p>
+        <div slot="footer">
+            发布日期：2021年11月18号
+        </div>
+        <h2 slot="title">通知</h2>
+    </child>
+</div>
+
+<script src="../lib/vue.js"></script>
+
+<!--弹窗子组件定义-->
+<template id="child">
+    <div>
+        <h4 style="color: red">我是子组件</h4>
+        <div class="level2">
+            <slot name="title"></slot><!--插槽1-->
+            <div style="background: aqua">
+                <slot name="content"></slot><!--插槽2-->
+            </div>
+            <slot name="footer"></slot><!--插槽3-->
+        </div>
+    </div>
+</template>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                content: "明后天工厂限电，休息两天,等待工厂通知"
+            }
+        },
+        components: {
+            Child: {
+                template: "#child"
+            },
+            Item: {
+                functional: true,
+                name: "MenuItem",
+                props: {
+                    icon: {
+                        type: String,
+                        default: ''
+                    },
+                    title: {
+                        type: String,
+                        default: ''
+                    }
+                },
+                render(h, context) {
+                    const {icon, title} = context.props
+                    const vnodes = []
+
+                    if (icon) {
+                        if (icon.includes('el-icon')) {
+                            vnodes.push(`<i class={[icon, 'sub-el-icon']} />`)
+                        } else {
+                            vnodes.push(`<svg-icon icon-class={icon}/>`)
+                        }
+                    }
+
+                    if (title) {
+                        vnodes.push(`<span slot='title'>{(title)}</span>`)
+                    }
+                    return vnodes
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <template v-if="show">
+        <div>
+            <h2>内部的h2</h2>
+        </div>
+    </template>
+
+    <template v-for="a in 3">
+        <div style="color: orangered">内部的template</div>
+    </template>
+    <div v-for='b in 2' style="color:deepskyblue">
+         使用div循环
+    </div>
+    <temlate slot="child">
+        <div>child元素</div>
+    </temlate>
+    <p>
+        hello vue
+    </p>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                show: true
+            }
+        },
+        components:{
+/*            Child:{
+
+            }*/
+        }
+    })
+</script>
+</body>
+</html>

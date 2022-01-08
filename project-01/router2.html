@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+        <router-link to="/login">login</router-link>
+        <router-link to="/info">info</router-link>
+        <router-link to="/bar/b1">go to /bar/b1</router-link>
+    </p>
+    <p>路由信息:{{r}}</p>
+    <!-- 路由出口 -->
+    <div style="border:1px solid black">
+        <router-view></router-view>
+    </div>
+</div>
+<script type="module">
+    // import routes from "./router";
+
+    Vue.component('Nav', {
+        template: `
+        <div>
+            <h2>nav组件</h2>
+            <a href="#/bar/dashboard">dashboard</a>
+            <a href="#/bar/b2">b2</a>
+        </div>
+        `
+    })
+    Vue.component('Sidebar', {
+        template: '<h2>sidebar组件</h2>'
+    })
+    Vue.component('Main', {
+        template: `
+            <div>
+                <h2>Main组件</h2>
+                <router-view></router-view>
+            </div>
+        `
+    })
+    var Dashboard = Vue.component('Dashboard', {
+        template: '<h2>dashboard</h2>'
+    })
+
+    var Layout = Vue.component('Layout', {
+        template: `
+        <div style="display: flex">
+            <Nav style="width:200px"></Nav>
+            <Sidebar style="width: 100px"></Sidebar>
+            <Main style="flex:1;background-color:lightyellow;"></Main>
+        </div>
+        `
+    })
+
+    var constantRoutes = [
+        {
+            'path': "/",
+            redirect: '/index',
+            'component': {
+                template: '<h1>主页面</h1>'
+            }
+        },{
+            'path':'/index',
+            component: {
+                template: '<h2>index页面</h2>'
+            }
+        }, {
+            'path': '/login',
+            'component': {
+                template: '<h2>login</h2>'
+            }
+        },
+        {
+            'path': '/bar',
+            component: Layout,
+            name: "BarLink",
+            // redirect: '/dashboard',
+            children: [
+                {
+                    path: 'dashboard',
+                    name: "Dashboard",
+                    component: Dashboard
+                }, {
+                    path: 'b2',
+                    name: "b2",
+                    component: {
+                        template: `<h2>b2</h2>`
+                    }
+                }
+            ]
+        }, {
+            path: '/404',
+            component: {
+                template: '<h2>未找到页面</h2>'
+            }
+        },
+        {
+            path: '*',
+            redirect: '/404',
+        }]
+    const router = new VueRouter({
+        // mode: 'history',
+        routes: constantRoutes
+    })
+    var isAuthenticated = false
+
+    var whiteList = ['/login']
+    router.beforeEach((to, from, next) => {
+        if (isAuthenticated) {
+            next()
+        } else {
+            isAuthenticated = true
+            if (whiteList.indexOf(to.path) != -1) {
+                next()
+            } else {
+                next('/login')
+            }
+        }
+    })
+    const app = new Vue({
+        router,
+        computed: {
+            r() {
+                return this.$route
+            }
+        }
+    }).$mount('#app')
+</script>
+</body>
+</html>
