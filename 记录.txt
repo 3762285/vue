@@ -1,0 +1,3 @@
+#CDN地址
+https://unpkg.com/vue@2.6.14/dist/vue.js
+https://unpkg.com/vue-router/dist/vue-router.js
