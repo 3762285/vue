@@ -6,7 +6,7 @@
 - 是真的吗
 - 太厉害了吧
 ---
-## 好的吗
+## 布局测试
 ```javascript
 let a=10
 function f(){
@@ -22,7 +22,7 @@ function f(){
 ![avtar](http://img61.ddimg.cn/upload_img/00405/luyi/DDlogoNEW.gif)
 
 好吧
-# 是具的吗
+# 晚上好，相对路径测试
 ![avatar](./images/sat.png)
 
 牛的很呀，图片都整进去了
