@@ -23,3 +23,7 @@ function f(){
 
 好吧
 # 是具的吗
+![avatar](./images/sat.png)
+
+牛的很呀，图片都整进去了
+
