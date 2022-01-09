@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .highlight {
+            color: red;
+        }
+
+        .hasborder {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="e1" :style="{'color':color,'font-size':size+'px'}">
+        <span>hello vue</span>
+    </div>
+
+    <!--直接绑定对象方式-->
+    <div id="e2" :style="style">
+        <span>hello vue</span>
+    </div>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el: '#app',
+        data() {
+            return {
+                color: 'red',
+                size: 25,
+                style: {
+                    'color': 'blue',
+                    'font-size': '30px'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

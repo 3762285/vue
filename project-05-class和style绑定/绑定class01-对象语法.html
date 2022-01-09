@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--对象语法。.class可以和静态属性共存-->
+    <div id="example" class="static" :class="{'didi-orange':isRipe,'didi-green':isNotRipe}">
+        <span>hello vue</span>
+    </div>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                isRipe: true,
+                isNotRipe: false
+            }
+        }
+    })
+</script>
+</body>
+</html>

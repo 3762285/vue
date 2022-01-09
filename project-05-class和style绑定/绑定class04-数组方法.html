@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .highlight {
+            color: red;
+        }
+
+        .hasborder {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--
+        除此外，也可以用三元来判断
+        :class="[vip?highlight:'',hasborder]
+        只有vip才会高亮
+        -->
+    <div id="example" class="static" :class="[highlight,hasborder]">
+        <span>hello vue</span>
+    </div>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                highlight: 'highlight',
+                hasborder: 'hasborder'
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

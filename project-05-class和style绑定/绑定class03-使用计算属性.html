@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .vip {
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--    使用计算属性，如果level级别>3，则将背景色变为gold-->
+    <div id="example" class="static" :class="mark">
+        <span>hello vue</span>
+        <input @click="addLevel()" type="button" value="增加level"/>
+    </div>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                level: 2,
+            }
+        },
+        methods: {
+            addLevel() {
+                this.level++
+            }
+        },
+        computed: {
+            mark() {
+                return {
+                    'vip': this.level > 3 ? true : false
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

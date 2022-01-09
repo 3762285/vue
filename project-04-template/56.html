@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <Child>
+        <h3 slot="title">标题</h3>
+        <tempalte slot="content">
+            <div>
+                <div style="color: red">发布人:经理</div>
+                <div>
+                    公司限电，明放天放假两天
+                </div>
+            </div>
+        </tempalte>
+        <div slot="footer">2021-1-9</div>
+    </Child>
+</div>
+<script src="../lib/vue.js"></script>
+<template id="child">
+    <div>
+        <slot name="title"></slot>
+        <slot name="content"></slot>
+        <slot name="footer"></slot>
+    </div>
+</template>
+<script>
+    Vue.component('Child', {
+        template: "#child"
+    })
+    let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                show: true
+            }
+        },
+    })
+</script>
+</body>
+</html>
+

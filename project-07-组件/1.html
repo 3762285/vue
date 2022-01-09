@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <app-link :to="h">
+        <span>hello vue</span>
+        <span>hi</span>
+    </app-link>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                type: 'a'
+            }
+        },
+        components: {
+            AppLink: {
+                template: `
+                    <component :is="type">
+                        <slot/>
+                    </component>
+                `,
+                props: ['to'],
+                computed: {
+                    type() {
+                        if (this.to == 'a') {
+                            return 'a'
+                        }
+                        return 'div'
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

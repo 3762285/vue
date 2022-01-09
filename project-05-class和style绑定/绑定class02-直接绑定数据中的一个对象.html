@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .yellow {
+            color: yellow;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<!--    直接绑定数据中的一个对象-->
+    <div id="example" class="static" :class="color">
+        <span>hello vue</span>
+        <input @click="changeColor()" type="button" value="修改class"/>
+    </div>
+</div>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                color: {
+                    'yellow': true,
+                    'red': false
+                }
+            }
+        },
+        methods: {
+            changeColor() {
+                this.color.red = true
+                this.color.yellow = false
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

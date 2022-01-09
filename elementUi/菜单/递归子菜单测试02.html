@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base="route.path"></sidebar-item>
+</div>
+</body>
+
+<script src="../../lib/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<script>
+    Vue.component('SubMenu', {
+        template: `
+            <div>submenu:{{path}}</div>
+        `,
+        props: ['path']
+    })
+    Vue.component('SingleMenu', {
+        template: `
+            <h4 style="background-color: yellow">{{path}}</h4>
+        `,
+        props: ['path']
+    })
+
+    Vue.component('SidebarItem', {
+        template: `
+            <div v-if="!item.hidden">
+                <template v-if="hasOneShowingChild(item.children,item)">
+                    <SingleMenu :path="item.path"></SingleMenu>
+                </template>
+                <template v-else>
+                    <h2>{{item.meta.title}}</h2>
+                    <SidebarItem v-for="child in item.children" :key='child.path' :item="child"></SidebarItem>
+                </template>
+            </div>
+        `,
+        data() {
+            this.onlyOneChild = null
+            return {}
+        },
+        props: ['base', 'item'],
+        methods: {
+            hasOneShowingChild(children = [], parent) {
+                const showingChildren = children.filter(item => {
+                    if (item.hidden) {
+                        return false
+                    } else {
+                        // Temp set(will be used if only has one showing child)
+                        this.onlyOneChild = item
+                        return true
+                    }
+                })
+
+                // When there is only one child router, the child router is displayed by default
+                if (showingChildren.length === 1) {
+                    return true
+                }
+
+                // Show parent if there are no child router to display
+                if (showingChildren.length === 0) {
+                    this.onlyOneChild = {...parent, path: '', noShowingChildren: true}
+                    return true
+                }
+                return false
+            }
+        }
+    })
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                visible: false,
+                msg: '消息占位',
+                active: '2',
+                routes: [
+                    {"path": "/login", "hidden": true},
+                    {"path": "/404", "hidden": true}, {
+                        "path": "/",
+                        "redirect": "/dashboard",
+                        "children": [{
+                            "path": "dashboard",
+                            "name": "Dashboard",
+                            "meta": {"title": "Dashboard", "icon": "dashboard"}
+                        }]
+                    }, {
+                        "path": "/example",
+                        "redirect": "/example/table",
+                        "name": "Example",
+                        "meta": {"title": "Example", "icon": "el-icon-s-help"},
+                        "children": [
+                            {"path": "table", "name": "Table", "meta": {"title": "Table", "icon": "table"}},
+                            {"path": "tree", "name": "Tree", "meta": {"title": "Tree", "icon": "tree"}}]
+                    }, {
+                        "path": "/form",
+                        "children": [{"path": "index", "name": "Form", "meta": {"title": "Form", "icon": "form"}}]
+                    }, {
+                        "path": "/nested",
+                        "redirect": "/nested/menu1",
+                        "name": "Nested",
+                        "meta": {"title": "Nested", "icon": "nested"},
+                        "children": [
+                            {
+                                "path": "menu1", "name": "Menu1", "meta": {"title": "Menu1"},
+                                "children": [
+                                    {"path": "menu1-1", "name": "Menu1-1", "meta": {"title": "Menu1-1"}},
+                                    {
+                                        "path": "menu1-2", "name": "Menu1-2", "meta": {"title": "Menu1-2"},
+                                        "children": [
+                                            {"path": "menu1-2-1", "name": "Menu1-2-1", "meta": {"title": "Menu1-2-1"}},
+                                            {"path": "menu1-2-2", "name": "Menu1-2-2", "meta": {"title": "Menu1-2-2"}}]
+                                    },
+                                    {"path": "menu1-3", "name": "Menu1-3", "meta": {"title": "Menu1-3"}}]
+                            },
+                            {"path": "menu2", "name": "Menu2", "meta": {"title": "menu2"}}
+                        ]
+                    },
+                    {
+                        "path": "external-link",
+                        "children": [{
+                            "path": "https://panjiachen.github.io/vue-element-admin-site/#/",
+                            "meta": {"title": "External Link", "icon": "link"}
+                        }]
+                    },
+                    {"path": "*", "redirect": "/404", "hidden": true}
+                ]
+            }
+        },
+        methods: {}
+    })
+</script>
+</html>
