@@ -19,3 +19,7 @@ function f(){
     console.log('hello')
 }
 ```
+![avtar](http://img61.ddimg.cn/upload_img/00405/luyi/DDlogoNEW.gif)
+
+好吧
+# 是具的吗
