@@ -6,39 +6,59 @@
 </head>
 <body>
 <div id="app">
-    <app-link :to="h">
-        <span>hello vue</span>
-        <span>hi</span>
+    <app-link :to="to">
+        <span>{{to}}</span>
     </app-link>
 </div>
 <script src="../lib/vue.js"></script>
 <script>
-new Vue({
-    el: "#app",
-    data() {
-        return {
-            type: 'a'
-        }
-    },
-    components: {
-        AppLink: {
-            template: `
-                <component :is="type">
-                    <slot/>
-                </component>
-            `,
-            props: ['to'],
-            computed: {
-                type() {
-                    if (this.to == 'a') {
-                        return 'a'
+    var isExternal = path => {
+        return /^(https?:|mailto:|tel:)/.test(path)
+    }
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                type: 'a',
+                to: 'https://www.baidu.com'
+            }
+        },
+        components: {
+            AppLink: {
+                template: `
+                    <component :is="type" v-bind="linkProps(to)">
+                        <slot/>
+                    </component>
+                `,
+                props: ['to'],
+                computed: {
+                    isExternal() {
+                        return isExternal(this.to)
+                    },
+                    type() {
+                        if (isExternal(this.to)) {
+                            return 'a'
+                        }
+                        return 'div'
                     }
-                    return 'div'
+                },
+                methods: {
+                    linkProps(to) {
+                        if (this.isExternal) {
+                            return {
+                                href: to,
+                                target: '_blank',
+                                rel: 'noopener'
+                            }
+                        }
+                        return {
+                            to: to
+                        }
+                    }
                 }
             }
         }
-    }
-})
+    })
 </script>
 </body>
 </html>
