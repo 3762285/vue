@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .submenu {
+            background: lightskyblue;
+        }
+
+        .drop {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <el-menu v-for="route in routes" :key="route.path" :item="route"></el-menu>
+</div>
+</body>
+
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+
+<script>
+    Vue.component("ElSubmenu", {
+        template: `
+            <div class="submenu">
+                <slot/>
+            </div>
+        `
+    })
+    //============================ 菜单item ============================
+    Vue.component("Item", {
+        template: `
+            <span>{{title}}</span>
+        `,
+        props: ["title"]
+    })
+
+    Vue.component("ElMenuItem", {
+        template: `
+            <div class="el-menu-item">
+                <slot/>
+            </div>
+        `
+    })
+    //============================ 菜单主体 ============================
+    Vue.component("ElMenu", {
+        template: `
+            <div>
+                <template v-if="hasNoShowingChild(item.children,item)">
+                    <el-menu-item>
+                        <item :title="onlyOneChild.title"></item>
+                    </el-menu-item>
+                </template>
+                <el-submenu v-else>
+                    <item class="drop" :title="dropText"/>
+                    <el-menu v-for="child in item.children" :key="child.path" :item="child"></el-menu>
+                </el-submenu>
+            </div>
+        `,
+        data() {
+            this.onlyOneChild = null
+            return {}
+        },
+        props: ["item"],
+        computed: {
+            dropText() {
+                return `▼ ${this.item.title}`
+            }
+        },
+        methods: {
+            hasNoShowingChild(children = [], parent) {
+                if (children.length == 0) {
+                    this.onlyOneChild = {...parent}
+                    return true
+                }
+                return false
+            }
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                routes: [
+                    {
+                        "title": "1"
+                    },
+                    {
+                        "title": "2",
+                        children: [
+                            {
+                                "title": "2-1"
+                            }, {
+                                "title": "2-2"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "3",
+                        children: [
+                            {
+                                "title": "3-1",
+                                children: [
+                                    {
+                                        "title": "3-1-1"
+                                    },
+                                    {
+                                        "title": "3-1-2"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "3-2",
+                                children: [
+                                    {
+                                        "title": "3-2-1"
+                                    }, {
+                                        "title": "3-2-2",
+                                        children:[
+                                            {
+                                                title:'3-2-2-1'
+                                            },
+                                            {
+                                                title:'3-2-2-2'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }, {
+                        "title": "4"
+                    },
+                    {
+                        "title": "5"
+                    }
+                ]
+            }
+        }
+    })
+</script>
+</html>

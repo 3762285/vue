@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <anchored-heading :level="level">
+        <span>h2标题内容</span>
+        <mod name="john"></mod>
+    </anchored-heading>
+</div>
+<script src="../lib/vue.js"></script>
+
+<script>
+    Vue.component('mod', {
+        functional: true,
+        props: ['name'],
+        render(h, context) {
+            var vnodes = []
+            vnodes.push(<span> </span>)
+            var name = context.props.name
+        }
+    })
+    Vue.component('anchored-heading', {
+        render: function (createElement, ctx) {
+            var l = ctx.level
+            return createElement(
+                'h' + this.level,   // 标签名称
+                this.$slots.default // 子节点数组
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    })
+    let vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                level: 2
+            }
+        }
+    })
+</script>
+</body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <blog-post>
+        <template slot="header">
+            <h1>about me</h1>
+        </template>
+        <p>here's some page content</p>
+        <template v-slot:footer>
+            <p>copyrigth 2016</p>
+        </template>
+    </blog-post>
+</div>
+<script src="../lib/vue.js"></script>
+
+</template>
+<script>
+    Vue.component('blog-post', {
+        render: function (createElement) {
+            var header = this.$slots.header
+            var body = this.$slots.default
+            var footer = this.$slots.footer
+            return createElement('div', [
+                createElement('header', header),
+                createElement('main', body),
+                createElement('div', footer)
+            ])
+        }
+    })
+    let vm = new Vue({
+        el: '#app'
+    })
+</script>
+</body>
+</html>
+

@@ -2,11 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
+        .submenu {
+            background: lightskyblue;
         }
     </style>
 </head>
@@ -16,33 +14,46 @@
 </div>
 </body>
 
-<script src="../../lib/vue.js"></script>
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
 
 <script>
-    Vue.component('SubMenu', {
+    Vue.component('ElSubmenu', {
         template: `
-            <div>submenu:{{path}}</div>
+            <div class="submenu">
+                <slot/>
+            </div>
         `,
         props: ['path']
     })
-    Vue.component('SingleMenu', {
+
+    //单条菜单项内部包裹的图标和文字，这里只有文字来模拟
+    Vue.component('Item', {
         template: `
-            <h4 style="background-color: yellow">{{path}}</h4>
+            <span>{{title}}</span>
         `,
-        props: ['path']
+        props: ['title']
+    })
+
+    Vue.component('ElMenuItem', {
+        template: `
+            <div class="el-menu-item">
+                <slot/>
+            </div>
+        `
     })
 
     Vue.component('SidebarItem', {
         template: `
-            <div v-if="!item.hidden">
+            <div v-if="!item.hidden" class="sidebar-item">
                 <template v-if="hasOneShowingChild(item.children,item)">
-                    <SingleMenu :path="item.path"></SingleMenu>
+                    <el-menu-item :path="item.path">
+                        <item :title="onlyOneChild.meta.title"></item>
+                    </el-menu-item>
                 </template>
-                <template v-else>
-                    <h2>{{item.meta.title}}</h2>
+                <el-submenu v-else>
+                    <item style="color:red;font-weight: bold" v-if="item.meta" :title="dropText"/>
                     <SidebarItem v-for="child in item.children" :key='child.path' :item="child"></SidebarItem>
-                </template>
+                </el-submenu>
             </div>
         `,
         data() {
@@ -50,24 +61,29 @@
             return {}
         },
         props: ['base', 'item'],
+        computed: {
+            dropText() {
+                return `▼ ${this.item.meta.title}`
+            }
+        },
         methods: {
             hasOneShowingChild(children = [], parent) {
+                if(children.length==0){
+                    console.log('hello')
+                }
                 const showingChildren = children.filter(item => {
                     if (item.hidden) {
                         return false
                     } else {
-                        // Temp set(will be used if only has one showing child)
                         this.onlyOneChild = item
                         return true
                     }
                 })
 
-                // When there is only one child router, the child router is displayed by default
                 if (showingChildren.length === 1) {
                     return true
                 }
 
-                // Show parent if there are no child router to display
                 if (showingChildren.length === 0) {
                     this.onlyOneChild = {...parent, path: '', noShowingChildren: true}
                     return true
@@ -85,7 +101,8 @@
                 active: '2',
                 routes: [
                     {"path": "/login", "hidden": true},
-                    {"path": "/404", "hidden": true}, {
+                    {"path": "/404", "hidden": true},
+                    {
                         "path": "/",
                         "redirect": "/dashboard",
                         "children": [{
@@ -93,7 +110,8 @@
                             "name": "Dashboard",
                             "meta": {"title": "Dashboard", "icon": "dashboard"}
                         }]
-                    }, {
+                    },
+                    {
                         "path": "/example",
                         "redirect": "/example/table",
                         "name": "Example",
@@ -101,10 +119,12 @@
                         "children": [
                             {"path": "table", "name": "Table", "meta": {"title": "Table", "icon": "table"}},
                             {"path": "tree", "name": "Tree", "meta": {"title": "Tree", "icon": "tree"}}]
-                    }, {
+                    },
+                    {
                         "path": "/form",
                         "children": [{"path": "index", "name": "Form", "meta": {"title": "Form", "icon": "form"}}]
-                    }, {
+                    },
+                    {
                         "path": "/nested",
                         "redirect": "/nested/menu1",
                         "name": "Nested",
